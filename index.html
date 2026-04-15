@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tudo isso para minha princesa, eu te amo</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/CSS/stayle.css">
+</head>
+<body class="loading intro-locked">
+  <div id="pageLoader" class="page-loader" aria-live="polite">
+    <div class="loader-card">
+      <p>Carregando nossa história...</p>
+      <div class="loader-dots" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <div id="introOverlay" class="intro-overlay" hidden>
+    <div id="introStepOne" class="intro-card">
+      <p>Achou que essa seria sua surpresa do dia das mulheres?</p>
+      <button id="introNextBtn" class="quiz-btn" type="button">Próximo</button>
+    </div>
+    <div id="introStepTwo" class="intro-card" hidden>
+      <p>Não! É uma surpresa de um dia normal, como você gosta!❤️</p>
+      <button id="introRevealBtn" class="quiz-btn" type="button">Ver surpresa</button>
+    </div>
+  </div>
+
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+  <div id="surpriseLayer" class="surprise-layer" aria-hidden="true"></div>
+  <div id="finalSurpriseOverlay" class="final-surprise-overlay" hidden>
+    <div class="final-surprise-card">
+      <h2>Você é minha princesa, Sophia.</h2>
+      <img src="./assets/img/fotoNaPraia.jpeg" alt="Momento especial do casal" class="final-surprise-photo" />
+      <p>
+        Obrigado por existir na minha vida, fiel é o Senhor por me dar a honra de esta ao seu lado!
+      </p>
+      <p class="final-surprise-strong">Eu te amo hoje, amanhã e para sempre.</p>
+      <button id="closeFinalSurpriseBtn" class="quiz-btn" type="button">Fechar</button>
+    </div>
+  </div>
+  <div id="futureMessageOverlay" class="future-overlay" hidden>
+    <div class="future-card">
+      <h2>Mensagem do futuro</h2>
+      <p>
+        Meu amor, se você estiver lendo isso daqui a um tempo, quero que saiba:
+        eu continuo escolhendo você todos os dias, com o mesmo amor e com ainda mais gratidão.
+      </p>
+      <button id="closeFutureMessageBtn" class="quiz-btn" type="button">Fechar</button>
+    </div>
+  </div>
+  <div id="photoLightbox" class="photo-lightbox" hidden>
+    <button id="closePhotoLightboxBtn" class="lightbox-close" type="button" aria-label="Fechar foto">✕</button>
+    <img id="lightboxImage" src="" alt="Foto ampliada">
+    <p id="lightboxCaption"></p>
+  </div>
+  <div class="hidden-love-map" aria-hidden="true">
+    <span class="hidden-love" style="left: 6vw; top: 18vh;">EU TE AMO</span>
+    <span class="hidden-love" style="left: 94vw; top: 18vh;">EU TE AMO</span>
+    <span class="hidden-love" style="left: 7vw; top: 50vh;">EU TE AMO</span>
+    <span class="hidden-love" style="left: 93vw; top: 50vh;">EU TE AMO</span>
+    <span class="hidden-love" style="left: 6vw; top: 82vh;">EU TE AMO</span>
+    <span class="hidden-love" style="left: 94vw; top: 82vh;">EU TE AMO</span>
+  </div>
+
+  <main class="page">
+    <section class="hero reveal">
+      <p class="badge">Em um dia comum, como você gosta!</p>
+      <h1 id="heroTitle" data-fulltext="Tudo isso para minha princesa, eu te amo">Tudo isso para minha princesa, eu te amo</h1>
+      <p class="subtitle">Essa página é só um pedacinho do quanto a Sophia é incrível para mim.</p>
+      <div class="hero-actions">
+        <button id="ambientToggleBtn" class="quiz-btn secondary hero-btn hero-audio-btn" type="button">Ativar trilha sonora</button>
+        <a href="#musica" id="surpriseBtn" class="cta hero-btn">Botão surpresa</a>
+        <button id="themeToggleBtn" class="quiz-btn secondary hero-btn hero-theme-btn" type="button">Modo claro</button>
+      </div>
+      <div id="ambientYoutubePlayer" class="ambient-youtube-player" aria-hidden="true"></div>
+    </section>
+
+    <section id="musica" class="music-section reveal">
+      <h2>Nossa trilha sonora</h2>
+      <div class="music-player-shell">
+        <button id="prevTrackBtn" class="side-track-btn left" aria-label="Música anterior">❮</button>
+        <div class="spotify-card">
+          <img src="./assets/img/foto-01.jpg" alt="Foto de vocês dois" class="cover" id="coverArt">
+
+          <div class="track-info">
+            <div class="track-top">
+              <p class="label">TOCANDO AGORA</p>
+            </div>
+            <h3 id="trackTitle">Mude o título da música aqui</h3>
+            <p id="trackArtist">Guilherme + Sophia</p>
+
+            <div class="progress-wrap">
+              <span id="currentTime">0:00</span>
+              <button id="playBtn" class="play-btn" aria-label="Tocar música">▶</button>
+              <span id="duration">0:00</span>
+            </div>
+
+            <input id="progress" class="progress" type="range" min="0" value="0" step="1" aria-label="Barra de progresso da música">
+            <div id="spotifyEmbedWrap" class="spotify-embed-wrap" hidden>
+              <iframe
+                id="spotifyEmbedFrame"
+                src=""
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                title="Spotify player"
+              ></iframe>
+            </div>
+            <p class="hint">Use as setas para trocar música e clique em play para mostrar o player do Spotify.</p>
+          </div>
+        </div>
+        <button id="nextTrackBtn" class="side-track-btn right" aria-label="Próxima música">❯</button>
+      </div>
+      <audio id="audioPlayer" preload="metadata"></audio>
+    </section>
+
+    <section class="gallery reveal">
+      <h2>Nossos momentos</h2>
+      <p class="gallery-text">Um pouco dos nossos momentos até aqui. Clique em qualquer foto para ampliar.</p>
+      <div class="grid">
+        <img src="./assets/img/fotoNoEspelhoDeCasa.jpeg" alt="Foto do casal 1" class="photo-card floating">
+        <img src="./assets/img/fotoNaPraia.jpeg" alt="Foto do casal 2" class="photo-card">
+        <img src="./assets/img/fotoNaIgreja.jpeg" alt="Foto do casal 3" class="photo-card floating delay">
+        <img src="./assets/img/fotoNoBoliche.jpeg" alt="Foto do casal 4" class="photo-card">
+      </div>
+    </section>
+
+    <section class="story-map-section reveal">
+      <h2>Mapa da nossa história</h2>
+      <p class="quiz-subtitle">Alguns lugares que marcaram a nossa caminhada.</p>
+      <div class="story-map-grid">
+        <article class="story-map-card reveal">
+          <h3>Dia que te levei ao hospital</h3>
+          <p>Você diz que esse foi o dia que eu mostrei que te amava, mas esse também foi o dia que eu vi que eu quero cuidar de você.</p>
+          <span>📍 Unimed</span>
+        </article>
+        <article class="story-map-card reveal">
+          <h3>Primeiro encontro</h3>
+          <p>Que sorvete incrível.</p>
+          <span>📍 Sampaolo</span>
+        </article>
+        <article class="story-map-card reveal">
+          <h3>Dia do nosso “sim”</h3>
+          <p>O capítulo mais importante da nossa história até aqui.</p>
+          <span>📍 17/01/2026 • 15:40</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="letter-section reveal">
+      <h2>Uma carta para Sophia</h2>
+      <p class="letter-subtitle">Clique no envelope para abrir.</p>
+
+      <div id="loveLetter" class="letter-card">
+        <button id="openLetterBtn" class="envelope" aria-label="Abrir carta">
+          <span class="envelope-flap"></span>
+          <span class="envelope-body"></span>
+          <span class="envelope-seal">❤️</span>
+        </button>
+
+        <article class="letter-paper" id="letterPaper">
+          <h3>Meu amor,</h3>
+          <p>
+            Essa carta é só mais uma maneira de dizer o quanto você é importante para mim.
+            Obrigado por estar ao meu lado, por me motivar e por trazer tanta alegria para os meus dias.
+            Eu te amo e escolho você, hoje e todos os dias. 💌
+          </p>
+          <p class="letter-sign">Com amor, Guilherme.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="timeline-section reveal">
+      <h2>Nossa linha do tempo</h2>
+      <p class="timeline-subtitle">Os capítulos mais bonitos da nossa história.</p>
+
+      <div class="timeline">
+        
+        <article class="timeline-item reveal">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">Há 5 anos</p>
+          <h3>Nossa amizade começou</h3>
+          <p>Não sabiamos que Deus iria nos trazer até aqui.</p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">07/11/2025 • 22:30</p>
+          <h3>Começo de tudo</h3>
+          <p>O dia em que conversamos e decidimos tentar caminhar juntos.</p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">29/11/2025</p>
+          <h3>Primeiro encontro</h3>
+          <p>O dia que tomamos nosso primeiro sorvete juntos.</p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">04/12/2025</p>
+          <h3>Nosso primeiro jogo do Flamengo juntos</h3>
+          <p>Vimos o Flamengo ganhar o brasileirão.</p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">17/01/2026 • 15:40</p>
+          <h3>Pedido de namoro</h3>
+          <p>Até então, o "sim" mais importante da minha vida, o dia que decidimos fazer dar certo.</p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="timeline-date">Hoje</p>
+          <h3>Nosso presente</h3>
+          <p>Seguimos firmes, escolhendo um ao outro todos os dias.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="motives-section reveal">
+      <h2>10 motivos para te amar</h2>
+      <p class="motives-subtitle">Só alguns de muitos motivos que me fazem escolher a Sophia todos os dias.</p>
+
+      <div class="motives-grid">
+        <article class="motive-card reveal"><span>01</span><p>Seu sorriso ilumina qualquer dia.</p></article>
+        <article class="motive-card reveal"><span>02</span><p>Você me incentiva a ser melhor.</p></article>
+        <article class="motive-card reveal"><span>03</span><p>Seu abraço é meu lugar favorito.</p></article>
+        <article class="motive-card reveal"><span>04</span><p>Você cuida de mim com amor e leveza.</p></article>
+        <article class="motive-card reveal"><span>05</span><p>Com você, até o simples vira especial.</p></article>
+        <article class="motive-card reveal"><span>06</span><p>Você tem um coração lindo e verdadeiro.</p></article>
+        <article class="motive-card reveal"><span>07</span><p>Seu jeito me traz paz e alegria.</p></article>
+        <article class="motive-card reveal"><span>08</span><p>Seu jeito de amar torna tudo mais leve e verdadeiro.</p></article>
+        <article class="motive-card reveal"><span>09</span><p>Ao seu lado, tudo faz mais sentido.</p></article>
+        <article class="motive-card reveal"><span>10</span><p>Porque você é a mulher da minha vida.</p></article>
+      </div>
+    </section>
+
+    <section class="plans-section reveal">
+      <h2>Nossos planos</h2>
+      <p class="quiz-subtitle">Sonhos que quero viver ao seu lado.</p>
+      <div class="plans-grid">
+        <article class="plan-card reveal"><h3>01</h3><p>Construir uma vida onde Deus seja a base fundamental.</p></article>
+        <article class="plan-card reveal"><h3>02</h3><p>Casar e viajar juntos para Itália e Grécia.</p></article>
+        <article class="plan-card reveal"><h3>03</h3><p>Construir uma carreira para ambos.</p></article>
+        <article class="plan-card reveal"><h3>04</h3><p>Construir uma familia com filhos e amigos.</p></article>
+      </div>
+    </section>
+
+    <section class="time-section reveal">
+      <h2>Nossa história no tempo</h2>
+      <p class="time-text">Um relógio para lembrar cada segundo com a Sophia.</p>
+
+      <div class="time-grid">
+        <article class="time-card">
+          <p class="time-label">JUNTOS DESDE</p>
+          <h3>07/11/2025</h3>
+          <div class="time-clock">
+            <div id="togetherClock" class="flip-clock"></div>
+          </div>
+          <p id="togetherSummary" class="time-summary"></p>
+        </article>
+
+        <article class="time-card">
+          <p class="time-label">NAMORO OFICIAL DESDE</p>
+          <h3>17/01/2026</h3>
+          <div class="time-clock">
+            <div id="datingClock" class="flip-clock"></div>
+          </div>
+          <p id="datingSummary" class="time-summary"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="message reveal">
+      <h2>Meu amor, hoje e sempre</h2>
+      <p>
+        Obrigado por existir na minha vida e por tornar cada dia mais leve.
+        Você é meu lugar favorito no mundo, em qualquer data.
+      </p>
+      <button id="heartBtn" class="heart-btn">Clique aqui</button>
+      <p id="secretMsg" class="secret">Eu te amo infinitamente. ❤️</p>
+    </section>
+
+    <section class="verse-section reveal">
+      <h2>Nosso versículo</h2>
+      <blockquote>
+        “Porque eu conheço os planos que tenho para vocês, diz o Senhor, planos de tranquilidade e não de mal, para dar-lhes uma esperança e um futuro.”
+      </blockquote>
+      <p>Jeremias 29:11</p>
+    </section>
+
+    <section class="quiz-section reveal">
+      <h2>Mini quiz</h2>
+      <p class="quiz-subtitle">Responda e veja um resultado fofo no final.</p>
+
+      <div class="quiz-card">
+        <p id="quizProgress" class="quiz-progress">Pergunta 1 de 10</p>
+        <h3 id="quizQuestion">Carregando pergunta...</h3>
+        <div id="quizOptions" class="quiz-options"></div>
+
+        <div class="quiz-actions">
+          <button id="quizNextBtn" class="quiz-btn" disabled>Próxima</button>
+          <button id="quizRestartBtn" class="quiz-btn secondary" hidden>Refazer quiz</button>
+        </div>
+
+        <p id="quizResult" class="quiz-result" hidden></p>
+      </div>
+    </section>
+
+    <section class="favorite-photo-section reveal">
+      <h2>Nossa foto favorita</h2>
+      <div class="favorite-photo-card">
+        <img id="favoritePhotoMain" src="./assets/img/fotoNaPraia.jpeg" alt="Nossa foto favorita" />
+        <p>Minha foto preferida de nós dois. 🤍</p>
+      </div>
+    </section>
+
+    <section class="vows-section reveal">
+      <h2>Minhas promessas</h2>
+      <p class="quiz-subtitle">Promessas simples, mas verdadeiras, para toda nossa jornada.</p>
+      <div class="plans-grid">
+        <article class="plan-card reveal"><h3>01</h3><p>Prometo cuidar do seu coração todos os dias.</p></article>
+        <article class="plan-card reveal"><h3>02</h3><p>Prometo ser abrigo nos dias leves e principalmente nos difíceis.</p></article>
+        <article class="plan-card reveal"><h3>03</h3><p>Prometo construir com você uma história de fé e amor.</p></article>
+        <article class="plan-card reveal"><h3>04</h3><p>Prometo te escolher, hoje e sempre.</p></article>
+      </div>
+    </section>
+
+    <section class="future-message-section reveal">
+      <h2>Uma mensagem para o nosso futuro</h2>
+      <p class="quiz-subtitle">Abra quando quiser sentir de novo tudo que vivemos hoje.</p>
+      <button id="openFutureMessageBtn" class="quiz-btn" type="button">Abrir mensagem do futuro</button>
+    </section>
+
+    <section class="extras-section reveal">
+      <h2>Fechamento da surpresa</h2>
+      <p class="quiz-subtitle">Últimos detalhes para deixar esse momento inesquecível.</p>
+
+      <div class="extras-grid">
+        <article class="extras-card">
+          <h3>Controles especiais</h3>
+          <div class="extras-actions">
+            <button id="finalSurpriseBtn" class="quiz-btn">Surpresa final</button>
+            <button id="showtimeBtn" class="quiz-btn secondary">Modo showtime</button>
+            <button id="printMemoryBtn" class="quiz-btn secondary">Salvar lembrança (PDF)</button>
+          </div>
+        </article>
+
+        <article class="extras-card qr-card">
+          <h3>QR code da surpresa</h3>
+          <img id="qrCodeImage" src="" alt="QR code para abrir esta página" />
+          <p id="qrCodeHint">Escaneie para abrir no celular.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Feito com amor por Guilherme para Sophia.</p>
+    <p>Que Deus continue abençoando nossa história todos os dias.</p>
+  </footer>
+
+  <button id="backToTopBtn" class="back-top-btn" type="button" aria-label="Voltar ao topo">↑</button>
+
+  <script src="./assets/JS/script.js"></script>
+</body>
+</html>
+b
